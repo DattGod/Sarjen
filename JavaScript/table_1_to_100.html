@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers 1 to 100</title>
+</head>
+<body>
+
+<div class="table-container">
+    <h1>1 to 100 (Column-Wise)</h1>
+    <table id="numberTable" border="1"></table>
+</div>
+
+<script>
+    const table = document.getElementById('numberTable');
+    const rows = 10;
+    const cols = 10;
+
+    for (let i = 1; i <= rows; i++) {
+        const tr = document.createElement('tr');
+        for (let j = 0; j < cols; j++) {
+            const td = document.createElement('td');
+            td.textContent = i + j * rows;
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+</script>
+
+</body>
+</html>

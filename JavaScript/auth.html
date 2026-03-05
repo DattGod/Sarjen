@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auth System</title>
+</head>
+<body>
+    <h2>Signup</h2>
+    Name: <input type="text" id="signupName"><br><br>
+    Password: <input type="password" id="signupPassword"><br><br>
+    <button onclick="signup()">Signup</button>
+
+    <hr>
+
+    <h2>Login</h2>
+    Name: <input type="text" id="loginName"><br><br>
+    Password: <input type="password" id="loginPassword"><br><br>
+    <button onclick="login()">Login</button>
+
+    <script>
+    function signup() {
+        var name = document.getElementById("signupName").value;
+        var password = document.getElementById("signupPassword").value;
+
+        if (!name || !password) {
+            alert("Fill all fields");
+            return;
+        }
+        var users = JSON.parse(localStorage.getItem("users")) || [];
+        var exists = users.find(u => u.name === name);
+        if (exists) {
+            alert("User already exists!");
+            return;
+        }
+        users.push({ name, password });
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("Signup successful!");
+    }
+    function login() {
+        var name = document.getElementById("loginName").value;
+        var password = document.getElementById("loginPassword").value;
+        var users = JSON.parse(localStorage.getItem("users")) || [];
+        var user = users.find(u => u.name === name && u.password === password);
+        if (!user) {
+            alert("Invalid credentials");
+            return;
+        }
+        sessionStorage.setItem("loggedInUser", name);
+        window.location.href = "dashboard.html";
+    }
+    </script>
+</body>
+</html>

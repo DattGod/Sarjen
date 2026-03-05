@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <script>
+        function incrementcount(){
+            var a=localStorage.getItem("count")
+            localStorage.setItem("count",++a)
+            document.getElementById("msg").innerHTML = "Counter : "+a;
+        }
+        function decrementcount(){
+            var a=localStorage.getItem("count")
+            localStorage.setItem("count",--a)
+            document.getElementById("msg").innerHTML = "Counter : "+a;
+        }
+    </script>
+</head>
+<body>
+    <p id="msg">Counter : 0</p>
+    <input type="button" value="Increment" onclick="incrementcount()">
+    <input type="button" value="Decrement" onclick="decrementcount()">
+</body>
+</html>

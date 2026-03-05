@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+
+<h1>Calculator: 2 Numbers</h1>
+
+<form id="calculatorForm">
+    <label>Number 1: <input type="number" name="num1"></label>
+    <label>Number 2: <input type="number" name="num2"></label>
+</form>
+
+<hr>
+
+<h2>1] Using Radio Buttons</h2>
+<form id="radioForm">
+    <label><input type="radio" name="operationRadio" value="add"> Add</label>
+    <label><input type="radio" name="operationRadio" value="sub"> Subtract</label>
+    <label><input type="radio" name="operationRadio" value="mul"> Multiply</label>
+    <label><input type="radio" name="operationRadio" value="div"> Divide</label>
+    <button type="button" onclick="calculateRadio()">Calculate</button>
+</form>
+<p id="resultRadio"></p>
+
+<hr>
+
+<h2>2] Using Dropdown</h2>
+<form id="selectForm">
+    <select name="operationSelect">
+        <option value="add">Add</option>
+        <option value="sub">Subtract</option>
+        <option value="mul">Multiply</option>
+        <option value="div">Divide</option>
+    </select>
+    <button type="button" onclick="calculateSelect()">Calculate</button>
+</form>
+<p id="resultSelect"></p>
+
+<hr>
+
+<h2>3] Using Individual Buttons</h2>
+<form id="buttonForm">
+    <button type="button" onclick="calculateButton('add')">Add</button>
+    <button type="button" onclick="calculateButton('sub')">Subtract</button>
+    <button type="button" onclick="calculateButton('mul')">Multiply</button>
+    <button type="button" onclick="calculateButton('div')">Divide</button>
+</form>
+<p id="resultButton"></p>
+
+<script>
+    function getNumbers() {
+        const form = document.getElementById('calculatorForm');
+        const formData = new FormData(form);
+        const num1 = parseFloat(formData.get('num1')) || 0;
+        const num2 = parseFloat(formData.get('num2')) || 0;
+        return [num1, num2];
+    }
+
+    function calculateRadio() {
+        const [num1, num2] = getNumbers();
+        const form = document.getElementById('radioForm');
+        const formData = new FormData(form);
+        const operation = formData.get('operationRadio');
+        if (!operation) {
+            alert('Please select an operation!');
+            return;
+        }
+        let result;
+        switch(operation) {
+            case 'add': result = num1 + num2; break;
+            case 'sub': result = num1 - num2; break;
+            case 'mul': result = num1 * num2; break;
+            case 'div': result = num2 !== 0 ? num1 / num2 : 'Error: Divide by zero'; break;
+        }
+        document.getElementById('resultRadio').textContent = `Result: ${result}`;
+    }
+
+    function calculateSelect() {
+        const [num1, num2] = getNumbers();
+        const form = document.getElementById('selectForm');
+        const formData = new FormData(form);
+        const operation = formData.get('operationSelect');
+        let result;
+        switch(operation) {
+            case 'add': result = num1 + num2; break;
+            case 'sub': result = num1 - num2; break;
+            case 'mul': result = num1 * num2; break;
+            case 'div': result = num2 !== 0 ? num1 / num2 : 'Error: Divide by zero'; break;
+        }
+        document.getElementById('resultSelect').textContent = `Result: ${result}`;
+    }
+
+    function calculateButton(op) {
+        const [num1, num2] = getNumbers();
+        let result;
+        switch(op) {
+            case 'add': result = num1 + num2; break;
+            case 'sub': result = num1 - num2; break;
+            case 'mul': result = num1 * num2; break;
+            case 'div': result = num2 !== 0 ? num1 / num2 : 'Error: Divide by zero'; break;
+        }
+        document.getElementById('resultButton').textContent = `Result: ${result}`;
+    }
+</script>
+
+</body>
+</html>

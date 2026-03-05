@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Welcome <span id="userName"></span></h2>
+
+    <button onclick="logout()">Logout</button>
+    <button onclick="deleteUser()">Delete Account</button>
+
+    <hr>
+
+    <h3>Edit Profile</h3>
+    New Name: <input type="text" id="newName"><br><br>
+    <button onclick="editProfile()">Update Name</button>
+
+    <hr>
+
+    <h3>Change Password</h3>
+    New Password: <input type="password" id="newPassword"><br><br>
+    <button onclick="changePassword()">Change Password</button>
+
+    <script>
+    window.onload = function () {
+        var user = sessionStorage.getItem("loggedInUser");
+        if (!user) {
+            window.location.href = "auth.html";
+            return;
+        }
+        document.getElementById("userName").innerText = user;
+    };
+    function logout() {
+        sessionStorage.removeItem("loggedInUser");
+        window.location.href = "auth.html";
+    }
+    function deleteUser() {
+        var name = sessionStorage.getItem("loggedInUser");
+        var users = JSON.parse(localStorage.getItem("users")) || [];
+        users = users.filter(u => u.name !== name);
+        localStorage.setItem("users", JSON.stringify(users));
+        logout();
+    }
+    function editProfile() {
+        var oldName = sessionStorage.getItem("loggedInUser");
+        var newName = document.getElementById("newName").value;
+        if (!newName) {
+            alert("Enter new name");
+            return;
+        }
+        var users = JSON.parse(localStorage.getItem("users")) || [];
+        users.forEach(function (u) {
+            if (u.name === oldName) {
+                u.name = newName;
+            }
+        });
+        localStorage.setItem("users", JSON.stringify(users));
+        sessionStorage.setItem("loggedInUser", newName);
+        alert("Name updated!");
+        location.reload();
+    }
+    function changePassword() {
+        var name = sessionStorage.getItem("loggedInUser");
+        var newPassword = document.getElementById("newPassword").value;
+        if (!newPassword) {
+            alert("Enter new password");
+            return;
+        }
+        var users = JSON.parse(localStorage.getItem("users")) || [];
+        users.forEach(function (u) {
+            if (u.name === name) {
+                u.password = newPassword;
+            }
+        });
+        localStorage.setItem("users", JSON.stringify(users));
+
+        alert("Password changed!");
+    }
+    </script>
+
+</body>
+</html>
