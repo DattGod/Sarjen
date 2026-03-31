@@ -1,0 +1,22 @@
+export const tasks = [
+  { id: 1, title: "Task-1: Create Single Page Application using Navigation in React", description: "▪ Create component : Home,About,Contact" },
+  { id: 2, title: "Task-2: Take a String from User and Print in Uppercase and Lowercase", description: "Take a String from User and Print in Uppercase and Lowercase." },
+  { id: 3, title: "Task-3: Character Count", description: "Take String for User when ever user is typing character print count number of character." },
+  { id: 4, title: "Task-4: Counter Application", description: "Take 2 Button Increment and Decrement. Range 0 to 10." },
+  { id: 5, title: "Task-5: Countdown Timer", description: "Automatic 0 to 10 with Start, Stop, Pause Button. Auto-stop at 10." },
+  { id: 6, title: "Task-6: Password Toggle", description: "Take a Textbox and Button to Show and Hide Password." },
+  { id: 7, title: "Task-7: Digital Clock", description: "Display Digital Clock current date & time." },
+  { id: 8, title: "Task-8: Guess the Number", description: "Textbox and Button. Match random number on click." },
+  { id: 9, title: "Task-9: Basic Calculator", description: "Basic Arithmetic Operations (SUM, SUB, MUL, DIV)." },
+  { id: 10, title: "Task-10: Calculator", description: "Full Calculator UI with arithmetic logic." },
+  { id: 11, title: "Task-11: GST Calculator", description: "Calculate GST based on amount and rate." },
+  { id: 12, title: "Task-12: Todo Application", description: "Manage tasks using State and LocalStorage persistence." },
+  { id: 13, title: "Task-13: Multiple Data Form with LocalStorage", description: "Store multiple user records in LocalStorage and display them in a table layout with Edit/Delete options." },
+  { id: 14, title: "Task-14: User Directory (API Fetch)", description: "Fetch user data from JSONPlaceholder API and display in a card layout." },
+  { id: 15, title: "Task-15: Weather App", description: "Search current weather by city name using a real-time API." },
+  { id: 16, title: "Task-16: Movie Search App", description: "Search movies using OMDB API and display results in a card layout." },
+  { id: 17, title: "Task-17: News App", description: "Fetch real-time news headlines using a global News API." },
+  { id: 18, title: "Task-18: Currency Converter App", description: "Convert between currencies using real-time exchange rates." },
+  { id: 19, title: "Task-19: Theme Mode Toggle", description: "Switch between Dark and Light modes using React state." },
+  { id: 20, title: "Security Patch Update", description: "Audit and update all npm dependencies to address known vulnerabilities." }
+];
